@@ -1,0 +1,15 @@
+{
+  "name": "showcase",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "run": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "vite": "3.2.4",
+    "sass": "1.56.2"
+  }
+}
