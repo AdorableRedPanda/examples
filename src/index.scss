@@ -1,0 +1,74 @@
+:root {
+    --color-bg-main: rgb(23, 17, 17);
+    --segment-active: #6d89ff;
+    --segment-default: #435191;
+}
+
+
+body {
+    z-index: 0;
+    min-height: 100vh;
+
+    background-color: var(--color-bg-main);
+}
+
+main {
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.fingerprint {
+    z-index: 1;
+    padding: 20px 0;
+    background: transparent;
+    width: fit-content;
+    height: 250px;
+    position: relative;
+}
+
+.fingerprint {
+    .svg {
+        z-index: 1;
+    }
+}
+
+.checking {
+
+    .segment {
+        --highlight-time: 0.5s;
+
+
+
+        animation-timing-function: steps(1, end);
+        animation-duration: 9s;
+        animation-iteration-count: infinite;
+        animation-delay: calc((var(--segment-index) - 1) * var(--highlight-time));
+
+        animation-name: segment_highlight;
+    }
+}
+
+.segment {
+    fill: var(--segment-active);
+}
+
+@for $i from 1 through 18 {
+    .segment_#{$i} { --segment-index: #{$i};  }
+}
+
+.scanning::after {
+    z-index: 2;
+    border-bottom: 14px solid var(--segment-active);
+    opacity: 0.9;
+    background-color: var(--color-bg-main);
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+    content: ' ';
+}
