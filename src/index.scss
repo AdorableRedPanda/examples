@@ -38,9 +38,9 @@ main {
 .checking {
 
     .segment {
+        fill: var(--segment-default);
+
         --highlight-time: 0.5s;
-
-
 
         animation-timing-function: steps(1, end);
         animation-duration: 9s;
@@ -51,12 +51,14 @@ main {
     }
 }
 
-.segment {
-    fill: var(--segment-active);
-}
-
 @for $i from 1 through 18 {
     .segment_#{$i} { --segment-index: #{$i};  }
+}
+
+.scanning {
+    .segment {
+        fill: var(--segment-active);
+    }
 }
 
 .scanning::after {
@@ -71,4 +73,30 @@ main {
     height: 100%;
     width: 100%;
     content: ' ';
+
+    animation: scanning_process 6s ease-in-out infinite;
+}
+
+
+@keyframes segment_highlight {
+    0%, 10% {
+        fill: var(--segment-active);
+    }
+    10%, 100% {
+        fill: var(--segment-default);
+    }
+}
+
+@keyframes scanning_process {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
 }
